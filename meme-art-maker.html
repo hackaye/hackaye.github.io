@@ -61,7 +61,7 @@ function addMeme(){
 	newMeme.setAttributeNS(null, "width", "30%"); newMeme.setAttributeNS(null, "height", "30%");
 	//pick an image at random - there are six stored in "memes" folder, named meme-1.jpg, meme-2.jpg and so on
 	var meme = Math.floor(Math.random()*6+1);
-	newMeme.setAttributeNS('http://www.w3.org/1999/xlink','href', 'https://github.com/hackaye/hackaye.github.io/blob/master/memes/meme-'+meme+".jpg");
+	newMeme.setAttributeNS('http://www.w3.org/1999/xlink','href', 'http://hackaye.com/wp-content/uploads/2015/09/meme-'+meme+".jpg");
 	//create animation - shrink and regrow
 	var anim = document.createElementNS("http://www.w3.org/2000/svg", 'animate');
 	anim.setAttribute("attributeName", "width");
