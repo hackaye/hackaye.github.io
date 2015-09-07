@@ -35,6 +35,23 @@ em {font-size:small; color:#0090ff;}
 //meme words 
 var words = ["IMHO", "XOXO", "L8R", "LULZ", "MEH", "OMG"];
 
+function registerAnimation(anim) {
+    var targets = getTargets(anim);
+    var elAnimators = new Array();
+    for(var i=0; i<targets.length ;i++) {
+      var target = targets[i];
+      var animator = new Animator(anim, target, i);
+      animators.push(animator);
+      elAnimators[i] = animator;
+    }
+    anim.animators = elAnimators;
+    var id = anim.getAttribute("id");
+    if (id)
+      id2anim[id] = anim;
+    for(var i=0; i<elAnimators.length ;i++)
+      elAnimators[i].register();
+}
+
 //function to add a star to the picture
 function addStar(){
 	//get the svg
@@ -58,9 +75,12 @@ function addStar(){
 	anim.setAttribute("to", strokeColor);
 	anim.setAttribute("dur", "1");
 	anim.setAttribute("begin", "mouseover");
+	
 	//add animation to star
 	newStar.appendChild(anim);
 
+registerAnimation(anim);
+anim.beginElement();
 	//add star to svg
 	svg.appendChild(newStar);
 	//update code display
