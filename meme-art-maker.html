@@ -187,9 +187,10 @@ function getStarPoints(midX, midY) {
 //code display
 function updateCode(){
 	var txt = document.getElementsByTagName('textarea')[0];
-	var svg = document.getElementById('svghold');
+	var svg = document.getElementsByTagName('svg')[0];
 	txt.value = "";
-	txt.value = svg.innerHTML;
+	var markup = (new XMLSerializer()).serializeToString(svg);
+	txt.value = markup;
 }
 </script>
 <meta name="viewport" content="width=800" /> 
