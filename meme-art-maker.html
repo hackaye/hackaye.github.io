@@ -154,9 +154,9 @@ function getStarPoints(midX, midY) {
 //code display
 function updateCode(){
 	var txt = document.getElementsByTagName('textarea')[0];
-	var svg = document.getElementsByTagName('svg')[0];
+	var svg = document.getElementById('svghold');
 	txt.value = "";
-	txt.value = svg.outerHTML;
+	txt.value = svg.innerHTML;
 }
 </script>
 <meta name="viewport" content="width=800" /> 
@@ -180,6 +180,7 @@ function updateCode(){
 <strong>3.</strong> Scroll down to see the SVG code and save your picture.<br/><br/><em>You can also interact with the code by inspecting the elements using your browser's right-click menus or developer tools.</em>
 </div>
 </div>
+<div id="svghold">
 <svg version="1.1"
 	baseProfile="full"
 	width="100%" height="100%"
@@ -199,7 +200,7 @@ function updateCode(){
   <rect x="0" y="0" width="100%" height="100%" fill="url(#back)"/>
 	
 </svg>
-
+</div>
 <div class="codehold">
 <div class="code">
 <p><strong>4.</strong> To save your artwork, copy the code below into a text editor, save the file with your chosen name and ".svg" as the extension, e.g. "picture.svg" and open it in a web browser.</p>
