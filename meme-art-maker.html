@@ -2,7 +2,7 @@
 <!DOCTYPE HTML>
 <html>
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
-<script type="text/ecmascript" xlink:href="smil.user.js"></script>
+
 <style type="text/css">
 html, body {background-color:#000000; color:#ffffff; font-family:sans-serif; margin:auto; width:800px;} 
 div.control {float:left; width:250px; margin-right:10px;}
@@ -35,6 +35,23 @@ em {font-size:small; color:#0090ff;}
 //meme words 
 var words = ["IMHO", "XOXO", "L8R", "LULZ", "MEH", "OMG"];
 
+function registerAnimation(anim) {
+    var targets = getTargets(anim);
+    var elAnimators = new Array();
+    for(var i=0; i<targets.length ;i++) {
+      var target = targets[i];
+      var animator = new Animator(anim, target, i);
+      animators.push(animator);
+      elAnimators[i] = animator;
+    }
+    anim.animators = elAnimators;
+    var id = anim.getAttribute("id");
+    if (id)
+      id2anim[id] = anim;
+    for(var i=0; i<elAnimators.length ;i++)
+      elAnimators[i].register();
+}
+
 //function to add a star to the picture
 function addStar(){
 	//get the svg
@@ -60,6 +77,10 @@ function addStar(){
 	anim.setAttribute("begin", "mouseover");
 	//add animation to star
 	newStar.appendChild(anim);
+	
+	registerAnimation(animation);
+	animation.beginElement();
+
 	//add star to svg
 	svg.appendChild(newStar);
 	//update code display
@@ -192,7 +213,7 @@ function updateCode(){
 	xmlns:xlink="http://www.w3.org/1999/xlink"
 	xmlns:svg="http://www.w3.org/2000/svg"
 	xml:space="preserve">
-	
+<script type="text/ecmascript" xlink:href="smil.user.js"></script>	
 	<defs>
       <linearGradient id="back" x1="0" y1="0" x2="1" y2="1">
         <stop offset="0%" stop-color="#ff0000"/>
