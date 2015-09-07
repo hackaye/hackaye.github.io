@@ -1,7 +1,6 @@
 <!DOCTYPE HTML>
 <html>
 <head>
-<script type="text/javascript" src="http://leunen.me/fakesmile/smil.user.js"></script>
 <style type="text/css">
 html, body {background-color:#000000; color:#ffffff; font-family:sans-serif; margin:auto; width:800px;} 
 div.control {float:left; width:250px; margin-right:10px;}
@@ -110,7 +109,8 @@ function addWord(){
 	newWord.style.textShadow = "3px 3px 0px #000000";
 	//pick random word from array
 	var wordNum = Math.floor(Math.random()*6);
-	newWord.innerHTML = words[wordNum];
+	var textNode = document.createTextNode(words[wordNum]);
+	newWord.appendChild(textNode);
 	//create animation to rotate the word
 	var anim = document.createElementNS("http://www.w3.org/2000/svg", 'animateTransform');
 	anim.setAttribute("attributeName", "transform");
