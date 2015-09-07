@@ -195,7 +195,7 @@ function updateCode(){
 	markup = svgcode.replace('NS1:', '');
 	//remove script
 	svgcode = markup.replace('<script xlink:href="smil.user.js" type="text/ecmascript"/>');
-	markup = svgcode.replace('<script xlink:href="smil.user.js" type="text/ecmascript"></script>');
+	markup = svgcode.replace('<script xlink:href="smil.user.js" type="text/ecmascript"><\/script>');
 	txt.value = markup;
 }
 </script>
