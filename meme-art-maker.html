@@ -190,7 +190,8 @@ function updateCode(){
 	var svg = document.getElementsByTagName('svg')[0];
 	txt.value = "";
 	var markup = (new XMLSerializer()).serializeToString(svg);
-	txt.value = markup;
+	var svgcode = markup.replace('xmlns:NS1=""', '');
+	txt.value = svgcode.replace('NS1:', '');
 }
 </script>
 <meta name="viewport" content="width=800" /> 
